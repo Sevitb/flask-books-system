@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	</head>
+
+	<body>
+		
+		Автор подал данные в книгу {{author.bookTitle}} к главе {{author.chapterTitle}}.
+		
+		Ваши данные:
+		
+		<table>
+		
+			<tr>
+				<td> Имя </td> 
+				<td> {{author.firstName}} </td>
+			</tr>
+		
+			<tr>
+				<td> Фамилия </td> 
+				<td> {{author.lastName}} </td>
+			</tr>
+			
+			<tr>
+				<td> Отчество </td> 
+				<td> {{author.midName}} </td>
+			</tr>
+			
+			<tr>
+				<td> ФИО на английском языке </td> 
+				<td> {{author.firstNameTranslit}} {{author.midNameTranslit}} {{author.lastNameTranslit}} </td>
+			</tr>
+			
+			<tr>
+				<td>ORCID</td>
+				<td>{{author.ORCID}}</td>
+			<tr>
+			
+			<tr>
+				<td>Номер телефона</td>
+				<td>{{author.phoneNumber}}</td>
+			</tr>
+			<tr>
+			    <td>Адресс и место работы</td>
+				<td>{{author.jobAddress}}</td>
+			</tr>
+			<tr>
+			    <td>Место работы</td>
+				<td>{{author.jobAddress1}}</td>
+			</tr>
+			<tr>
+			    <td>Комментарий автора</td>
+				<td>{{author.authorComment}}</td>
+			</tr>
+			
+		<table>
+		
+	</body>
+</html>

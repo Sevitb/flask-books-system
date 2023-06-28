@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="grid">
+        <div class="card card_centred">
+            <h1>Выберите главу</h1>
+            <ul>
+                {%for chapter in chapters%}
+                <li> <a href="{{url_for('registerForm',chapter_id=chapter.id,book_id=book_id)}}">{{chapter.chapterTitle}}
+                </li>
+                {%endfor%}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock content %}

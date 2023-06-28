@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+
+{% block content %}
+<form id="login" method="POST">
+    <h1>Внесите данные</h1>
+    <fieldset id="inputs">
+        
+        <p>
+            <b>Выбрана книга:</b> {{info.Title}}
+        </p>
+        
+        <p>
+            <b>Выбрана глава:</b> {{info.Chapter}}
+        </p>
+        
+        <input id="lastName"  name="lastName" type="text" placeholder="Фамилия" autofocus required>   
+        <input id="firstName" name="firstName" type="text" placeholder="Имя" required>
+        <input id="midName"   name="midName" type="text" placeholder="Отчество" required>
+        <input id="lastNameTranslit" name="lastNameTranslit" type="text" placeholder="Фамилия на английском языке" autofocus required>   
+        <input id="firstNameTranslit" name="firstNameTranslit" type="text" placeholder="Имя на английском языке" required>
+        <input id="midNameTranslit" name="midNameTranslit" type="text" placeholder="Отчество на английском языке" required>
+        <input id="jobAddress" name="jobAddress" type="text" placeholder="Адрес места работы на английском языке (как на сайте ВУЗа)" required>
+        <input id="jobAddress1" name="jobAddress1" type="text" placeholder="Место работы на английском языке (как на сайте ВУЗа)" required>
+        <input id="ORCID" name="ORCID" type="text" placeholder="ORCID автора" required>
+        <input id="phoneNumber"     name="phoneNumber" type="tel" pattern="+[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" placeholder="Номер телефона в формате +xxxxxxxxxxx"/>
+        <input id="email" type="text" name="email" placeholder="Адрес электронной почты" required>
+        <textarea id="comment" rows="5" style="resize:none; width: 100%" name="comment" placeholder="Комментарий. (укажите свои пожелания, например, по поводу включения информации о Гранте)"></textarea>
+    </fieldset>
+    
+    <fieldset id="actions">
+        <input type="submit" id="submit" value="Отправить" >
+        <div id="okno_bad">
+                Ошибка при отправке даных!<br>
+            <a href="#" class="close">Закрыть окно</a>
+        </div>
+        <div id="okno_good">
+                Ваши данные успешно отправлены!<br>
+            <a href="#" class="close">Закрыть окно</a>
+        </div>
+        <div id = "okno_choose">
+            Вы не выбрали книгу или/и главу!<br>
+            <a href="#" class="close">Закрыть окно</a>
+        </div>
+    </fieldset>
+</form>
+{% endblock content %}

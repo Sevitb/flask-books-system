@@ -1,0 +1,85 @@
+{% extends "admin/index.html" %}
+
+{% block styles %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+{% endblock styles %}
+
+{% block content %}
+<section class="my-3">
+    <div class="container">
+
+        <div class="d-grid gap-3">
+            <div class="card">
+                <div class="card-header">
+                    Добавить главу
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <input class="booktitle" id="chaptername" name="chaptername" type="text"
+                            placeholder="Название главы" autofocus required>
+                        <input class="authorscount" id="count" name="count" type="text" placeholder="Количество авторов"
+                            autofocus required>
+                        <input type="submit" id="submit" value="Добавить">
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    Главы
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped table-hover border-gray-800">
+                        <tr>
+                            <td>Название</td>
+                            <td>Прикреплено авторов</td>
+                            <td>Максимальное количество авторов</td>
+                            <td>Действия</td>
+                            <td>Регистрация</td>
+                        </tr>
+                        {% for chapter in chapters %}
+                        <tr>
+                            <td align="left">
+                                {{chapter.chapterTitle}}
+                            </td>
+                            <td align="center">
+                                {{chapter.authorsCount}}
+                            </td>
+                            <td align="center">
+                                {{chapter.authorsCountMax}}
+                            </td>
+                            <td>
+                                <a href="{{url_for('adminChapterDelete', chapter_id=chapter.id, book_id=book_id)}}"
+                                    onclick="return confirm('Удалить главу?')"><br>Удалить</a>
+                                <a href="{{url_for('adminChapterEdit', chapter_id=chapter.id)}}">Редактировать</a>
+                            </td>
+                            <td>
+                                <form>
+                                    <label for="allow_registration">Регистрация</label>
+                                    <input type="checkbox"
+                                        onchange="send('chapter/change-state','chapter_id={{chapter.id}}')"
+                                        name="allow_registration" id="allow_registration" {% if
+                                        chapter.allowRegistration %} checked{% endif %}>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+    function send(view, query) {
+        event.preventDefault();
+        var theUrl = view + "?" + query;
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", theUrl, true); // false for synchronous request
+        xmlHttp.send(null);
+        xmlHttp.onload = () => {
+            return
+        };
+    }
+</script>
+{% endblock content %}
